@@ -1,7 +1,7 @@
 # pizza_application
 Application which can create and manage Pizzas
 
-Ruby Version used: Ruby 3.0.0
+Ruby Version used: Ruby 3.0.0p0
 IDE: VSCode
 OS: macOS Monterey Version 12.6
 Node: 18.11.0
