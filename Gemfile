@@ -75,4 +75,8 @@ group :test do
   gem "webdrivers"
 end
 
+group :test do
+  gem 'database_cleaner-active_record'
+end
+
 gem "tailwindcss-rails", "~> 2.0"
