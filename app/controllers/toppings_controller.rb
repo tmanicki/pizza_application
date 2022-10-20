@@ -8,6 +8,7 @@ class ToppingsController < ApplicationController
 
   # GET /toppings/1 or /toppings/1.json
   def show
+    @toppings = Topping.find(params[:id])
   end
 
   # GET /toppings/new
@@ -52,7 +53,7 @@ class ToppingsController < ApplicationController
     @topping.destroy
 
     respond_to do |format|
-      format.html { redirect_to toppings_url, notice: "Topping was successfully destroyed." }
+      format.html { redirect_to toppings_url, notice: "Topping was successfully deleted." }
       format.json { head :no_content }
     end
   end
