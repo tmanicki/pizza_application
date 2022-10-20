@@ -7,7 +7,7 @@ RSpec.describe "toppings/index", type: :view do
         name: "Name"
       ),
       Topping.create!(
-        tNname: "Name"
+        name: "Name"
       )
     ])
   end
