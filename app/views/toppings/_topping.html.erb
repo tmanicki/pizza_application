@@ -1,12 +1,10 @@
 <div id="<%= dom_id topping %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Name:</strong>
+  <div class=" m-6">
     <%= topping.name %>
-  </p>
-
   <% if action_name != "show" %>
    <!-- <%= link_to "Show this topping", topping, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %> -->
-    <%= link_to 'Edit', edit_topping_path(topping), class: "rounded-lg py-3 ml-2 px-5 hover:text-white hover:bg-red-900 bg-gray-100 font-medium" %>
+    <%= link_to 'Edit', edit_topping_path(topping), class: "rounded-lg py-3 ml-2 px-5 hover:text-white hover:bg-red-900 bg-gray-100 font-small" %>
     <hr class="mt-6">
   <% end %>
+  </div>
 </div>
