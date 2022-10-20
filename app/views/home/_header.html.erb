@@ -24,9 +24,9 @@
             <ul>
                 <!--Working, but till button above is working, do not worry about
                 <a href="/" class=" mt-4 invisible sm:visible text-white hover:font-bold mr-4"> Home </a>-->
-                <a href="/" class=" mt-4 text-white hover:font-bold mr-4"> Home </a>
-                <a href="/home/login" class="mt-4 text-white hover:font-bold mr-4"> Login </a>
-                <a href="/toppings" class="mt-4 text-white hover:font-bold mr-4"> Topping List </a>
+                <%= link_to "Home", root_path, class:"nav-link mt-4 text-white hover:font-bold mr-4" %>
+                <%= link_to "Login", home_login_path, class:"nav-link mt-4 text-white hover:font-bold mr-4" %>
+                <%= link_to "Pizza Toppings", toppings_path, class:"nav-link mt-4 text-white hover:font-bold mr-4" %>
             <ul>
         </div>
     </div>
