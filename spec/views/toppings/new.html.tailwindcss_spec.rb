@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe "toppings/new", type: :view do
   before(:each) do
     assign(:topping, Topping.new(
-      name: "MyString",
-      type: ""
+      name: "MyString"
     ))
   end
 
@@ -15,7 +14,6 @@ RSpec.describe "toppings/new", type: :view do
 
       assert_select "input[name=?]", "topping[name]"
 
-      assert_select "input[name=?]", "topping[type]"
     end
   end
 end

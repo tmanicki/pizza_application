@@ -13,7 +13,6 @@
 ActiveRecord::Schema[7.0].define(version: 2022_10_20_000027) do
   create_table "toppings", force: :cascade do |t|
     t.string "name"
-    t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -4,7 +4,6 @@ RSpec.describe "toppings/edit", type: :view do
   let(:topping) {
     Topping.create!(
       name: "MyString",
-      type: ""
     )
   }
 
@@ -19,7 +18,6 @@ RSpec.describe "toppings/edit", type: :view do
 
       assert_select "input[name=?]", "topping[name]"
 
-      assert_select "input[name=?]", "topping[type]"
     end
   end
 end
