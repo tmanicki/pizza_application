@@ -11,12 +11,14 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class=" bg-white">
     <!-- Home/Header is for the top of the page + nav bar-->
     <%= render "home/header" %>
     <br>
-    <div class="container">
+    <div class=" m-10 rounded-lg container px-3 py-3 bg-slate-300">
+    <div class="px-3">
     <%= yield %>
+    </div>
     </div>
   </body>
 </html>

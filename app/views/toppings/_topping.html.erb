@@ -1,0 +1,13 @@
+<div id="<%= dom_id topping %>">
+  <div class=" m-6">
+    <%= topping.name %>
+  <% if action_name != "show" %>
+   <!-- <%= link_to "Show this topping", topping, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %> -->
+    <%= link_to 'Edit', edit_topping_path(topping), class: "rounded-lg py-3 ml-2 px-5 hover:text-white hover:bg-red-900 bg-gray-100 font-small" %>
+    <div class="inline-block">
+      <%= button_to 'Delete', topping_path(topping), method: :delete, class: "rounded-lg py-3 ml-2 px-5 hover:text-white hover:bg-red-900 bg-gray-100 font-small" %>
+    </div>
+    <hr class="mt-6">
+  <% end %>
+  </div>
+</div>

@@ -15,17 +15,18 @@
     </div>
     <div class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
         <div class="py-1" role="none">
-            <a href="/" class="block mt-4 sm:inline-block sm:mt-0 text-white hover:font-bold hover:underline mr-4"> Home </a>
-            <a href="/home/login" class="block mt-4 sm:inline-block sm:mt-0 text-white hover:font-bold hover:underline mr-4"> Login </a>
+            <a href="/" class="block mt-4 sm:inline-block sm:mt-0 text-white hover:font-bold mr-4"> Home </a>
+            <a href="/home/login" class="block mt-4 sm:inline-block sm:mt-0 text-white hover:font-bold mr-4"> Login </a>
         </div>
     </div> -->
     <div class="w-full block flex-grow sm:flex sm:items-center sm:w-auto">
         <div class=" text-sm sm:flex-grow">
             <ul>
                 <!--Working, but till button above is working, do not worry about
-                <a href="/" class=" mt-4 invisible sm:visible text-white hover:font-bold hover:underline mr-4"> Home </a>-->
-                <a href="/" class=" mt-4 text-white hover:font-bold hover:underline mr-4"> Home </a>
-                <a href="/home/login" class="mt-4 text-white hover:font-bold hover:underline mr-4"> Login </a>
+                <a href="/" class=" mt-4 invisible sm:visible text-white hover:font-bold mr-4"> Home </a>-->
+                <%= link_to "Home", root_path, class:"nav-link mt-4 text-white hover:font-bold mr-4" %>
+                <%= link_to "Login", home_login_path, class:"nav-link mt-4 text-white hover:font-bold mr-4" %>
+                <%= link_to "Pizza Toppings", toppings_path, class:"nav-link mt-4 text-white hover:font-bold mr-4" %>
             <ul>
         </div>
     </div>
