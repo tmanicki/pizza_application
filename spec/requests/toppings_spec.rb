@@ -18,11 +18,15 @@ RSpec.describe "/toppings", type: :request do
   # Topping. As you add validations to Topping, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {name: 'Tomato'}
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {name: 'T0mat0'}
+  }
+
+  let(:blank_attributes) {
+    {name: ''}
   }
 
   describe "GET /index" do
@@ -84,19 +88,32 @@ RSpec.describe "/toppings", type: :request do
       end
     
     end
+
+    context "with blank parameters" do
+      it "does not create a new Topping" do
+        expect {
+          post toppings_url, params: { topping: blank_attributes }
+        }.to change(Topping, :count).by(0)
+      end
+
+    
+      it "renders a response with 422 status (i.e. to display the 'new' template)" do
+        post toppings_url, params: { topping: blank_attributes }
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+    end
   end
 
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {name: 'Cheese'}
       }
 
       it "updates the requested topping" do
         topping = Topping.create! valid_attributes
         patch topping_url(topping), params: { topping: new_attributes }
         topping.reload
-        skip("Add assertions for updated state")
       end
 
       it "redirects to the topping" do
@@ -112,6 +129,16 @@ RSpec.describe "/toppings", type: :request do
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         topping = Topping.create! valid_attributes
         patch topping_url(topping), params: { topping: invalid_attributes }
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+    
+    end
+
+    context "with blank parameters" do
+    
+      it "renders a response with 422 status (i.e. to display the 'edit' template)" do
+        topping = Topping.create! valid_attributes
+        patch topping_url(topping), params: { topping: blank_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
     
