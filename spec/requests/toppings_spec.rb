@@ -25,10 +25,14 @@ RSpec.describe "/toppings", type: :request do
     {name: 'T0mat0'}
   }
 
+  let(:new_attributes) {
+    {name: 'Cheese'}
+  }
+
   let(:blank_attributes) {
     {name: ''}
   }
-
+  
   describe "GET /index" do
     it "renders a successful response" do
       Topping.create! valid_attributes
@@ -36,6 +40,7 @@ RSpec.describe "/toppings", type: :request do
       expect(response).to be_successful
     end
   end
+
 
   describe "GET /show" do
     it "renders a successful response" do
@@ -45,12 +50,14 @@ RSpec.describe "/toppings", type: :request do
     end
   end
 
+
   describe "GET /new" do
     it "renders a successful response" do
       get new_topping_url
       expect(response).to be_successful
     end
   end
+
 
   describe "GET /edit" do
     it "renders a successful response" do
@@ -59,6 +66,7 @@ RSpec.describe "/toppings", type: :request do
       expect(response).to be_successful
     end
   end
+
 
   describe "POST /create" do
     context "with valid parameters" do
@@ -81,7 +89,6 @@ RSpec.describe "/toppings", type: :request do
         }.to change(Topping, :count).by(0)
       end
 
-    
       it "renders a response with 422 status (i.e. to display the 'new' template)" do
         post toppings_url, params: { topping: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
@@ -102,14 +109,27 @@ RSpec.describe "/toppings", type: :request do
         expect(response).to have_http_status(:unprocessable_entity)
       end
     end
+
+  context "with duplicate parameters" do
+    it "does not create a new Topping" do
+      post toppings_url, params: { topping: valid_attributes }
+      expect {
+        post toppings_url, params: { topping: valid_attributes }
+      }.to change(Topping, :count).by(0)
+    end
+
+  
+    it "renders a response with 422 status (i.e. to display the 'new' template)" do
+      post toppings_url, params: { topping: valid_attributes }
+      post toppings_url, params: { topping: valid_attributes }
+      expect(response).to have_http_status(:unprocessable_entity)
+    end
   end
+end
+
 
   describe "PATCH /update" do
     context "with valid parameters" do
-      let(:new_attributes) {
-        {name: 'Cheese'}
-      }
-
       it "updates the requested topping" do
         topping = Topping.create! valid_attributes
         patch topping_url(topping), params: { topping: new_attributes }
@@ -131,7 +151,6 @@ RSpec.describe "/toppings", type: :request do
         patch topping_url(topping), params: { topping: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
-    
     end
 
     context "with blank parameters" do
@@ -141,9 +160,19 @@ RSpec.describe "/toppings", type: :request do
         patch topping_url(topping), params: { topping: blank_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
+    end
+
+    context "with duplicate parameters" do
     
+      it "renders a response with 422 status (i.e. to display the 'edit' template)" do
+        post toppings_url, params: { topping: valid_attributes }
+        post toppings_url, params: { topping: new_attributes }
+        patch topping_url(2), params: { topping: valid_attributes }
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
     end
   end
+
 
   describe "DELETE /destroy" do
     it "destroys the requested topping" do
