@@ -1,4 +1,4 @@
-<h2 class="font-bold text-2xl m-2">Log in</h2>
+<h2 class="font-bold text-2xl m-2">Sign in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="fiel m-2">
@@ -19,7 +19,7 @@
   <% end %>
 
   <div class=" m-2 actions inline-block px-6 py-2.5 bg-slate-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 active:shadow-lg transition duration-150 ease-in-out">
-    <%= f.submit "LOG IN" %>
+    <%= f.submit "SIGN IN" %>
   </div>
   <%= render "devise/shared/links" %>
 <% end %>
