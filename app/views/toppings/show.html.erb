@@ -1,15 +1,17 @@
-<div class="mx-auto md:w-2/3 w-full flex">
+<div class="m-2  w-full ">
   <div class="mx-auto">
     <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
+    <h2 class="font-bold text-lg">Topping Created</h2>
     <%= render @topping %>
 
     <%= link_to 'Edit', edit_topping_path(@topping), class: "rounded-lg py-3 ml-2 px-5 hover:text-white hover:bg-red-900 bg-gray-100 font-medium" %>
     <div class="inline-block ml-2">
       <%= button_to 'Delete', topping_path(@topping), method: :delete, class: "rounded-lg py-3 ml-2 px-5 hover:text-white hover:bg-red-900 bg-gray-100 font-medium" %>
     </div>
-    <%= link_to 'Return to Toppings List', toppings_path, class: "rounded-lg py-3 ml-2 px-5 hover:text-white hover:bg-red-900 bg-gray-100 font-medium" %>
+    <%= link_to 'Add New Topping', new_topping_path, class: "rounded-lg py-3 ml-2 px-5 hover:text-white hover:bg-red-900 bg-gray-100 font-medium" %>
+    <%= link_to 'Back', toppings_path, class: "rounded-lg py-3 ml-2 px-5 hover:text-white hover:bg-red-900 bg-gray-100 font-medium" %>
   </div>
 </div>
