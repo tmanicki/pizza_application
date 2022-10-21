@@ -21,6 +21,10 @@ RSpec.describe "/toppings", type: :request do
     {name: 'Tomato'}
   }
 
+  let(:valid_space_attributes) {
+    {name: 'Tomato Sauce'}
+  }
+
   let(:invalid_attributes) {
     {name: 'T0mat0'}
   }
@@ -32,7 +36,8 @@ RSpec.describe "/toppings", type: :request do
   let(:blank_attributes) {
     {name: ''}
   }
-  
+ 
+#### INDEX
   describe "GET /index" do
     it "renders a successful response" do
       Topping.create! valid_attributes
@@ -41,7 +46,7 @@ RSpec.describe "/toppings", type: :request do
     end
   end
 
-
+#### SHOW
   describe "GET /show" do
     it "renders a successful response" do
       topping = Topping.create! valid_attributes
@@ -67,7 +72,7 @@ RSpec.describe "/toppings", type: :request do
     end
   end
 
-
+#### CREATE
   describe "POST /create" do
     context "with valid parameters" do
       it "creates a new Topping" do
@@ -78,6 +83,19 @@ RSpec.describe "/toppings", type: :request do
 
       it "redirects to the created topping" do
         post toppings_url, params: { topping: valid_attributes }
+        expect(response).to redirect_to(topping_url(Topping.last))
+      end
+    end
+
+    context "with valid parameters w/ spaces" do
+      it "creates a new Topping" do
+        expect {
+          post toppings_url, params: { topping: valid_space_attributes }
+        }.to change(Topping, :count).by(1)
+      end
+
+      it "redirects to the created topping" do
+        post toppings_url, params: { topping: valid_space_attributes }
         expect(response).to redirect_to(topping_url(Topping.last))
       end
     end
@@ -127,7 +145,7 @@ RSpec.describe "/toppings", type: :request do
   end
 end
 
-
+#### UPDATE
   describe "PATCH /update" do
     context "with valid parameters" do
       it "updates the requested topping" do
@@ -144,6 +162,21 @@ end
       end
     end
 
+    context "with valid parameters /w spaces" do
+      it "updates the requested topping" do
+        topping = Topping.create! valid_attributes
+        patch topping_url(topping), params: { topping: valid_space_attributes }
+        topping.reload
+      end
+
+      it "redirects to the topping" do
+        topping = Topping.create! valid_attributes
+        patch topping_url(topping), params: { topping: valid_space_attributes }
+        topping.reload
+        expect(response).to redirect_to(topping_url(topping))
+      end
+    end
+    
     context "with invalid parameters" do
     
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
@@ -173,7 +206,7 @@ end
     end
   end
 
-
+#### DELETE
   describe "DELETE /destroy" do
     it "destroys the requested topping" do
       topping = Topping.create! valid_attributes
