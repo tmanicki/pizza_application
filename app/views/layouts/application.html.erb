@@ -15,8 +15,8 @@
     <!-- Home/Header is for the top of the page + nav bar-->
     <%= render "home/header" %>
     <br>
-    <% if alert %>
-      <% render "layouts/alerts" %>
+    <% if alert || notice %>
+      <%= render "layouts/alerts" %>
     <% end %>
     <div class=" m-10 rounded-lg container px-3 py-3 bg-slate-300">
       <div class="px-3">
