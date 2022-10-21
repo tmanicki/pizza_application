@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pizzas
   devise_for :admins
   resources :toppings
   get 'home/index'
