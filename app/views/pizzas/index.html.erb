@@ -9,7 +9,7 @@
     <table class="table-auto m-2 text-left text-lg w-[20rem]">
       <thead>
         <tr>
-          <th>Name</th>
+          <th>Pizza Name</th>
           <th colspan="2"></th>
         </tr>
       </thead>
@@ -17,7 +17,7 @@
       <tbody>
         <% @pizzas.each do |pizza| %>
           <tr>
-            <td><%= pizza.name %></td>
+            <td><%= pizza.pName %></td>
             <td><%= link_to 'Edit', edit_pizza_path(pizza), class: "text-sm rounded-lg py-1 ml-2 px-2 hover:text-white hover:bg-red-900 bg-gray-100 font-small" %></td>
             <td><%= button_to 'Delete', pizza_path(pizza), method: :delete, class: "text-sm rounded-lg py-1 ml-2 px-2 hover:text-white hover:bg-red-900 bg-gray-100 font-small" %></td>
           </tr>
@@ -26,7 +26,7 @@
     </table>
     <%end%>
     <br/>
-  <%= link_to 'Add New Topping', new_pizza_path, class: "rounded-lg py-3 ml-2 px-5 hover:text-white hover:bg-red-900 bg-gray-100 font-medium" %>
+  <%= link_to 'Create New Pizza', new_pizza_path, class: "rounded-lg py-3 ml-2 px-5 hover:text-white hover:bg-red-900 bg-gray-100 font-medium" %>
   </div>
   <div class="py-2"></div>
 </div>

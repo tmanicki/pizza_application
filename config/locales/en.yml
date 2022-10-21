@@ -33,3 +33,7 @@ en:
   hello: "Hello world"
   errors:
     format: "%{message}"
+  helpers:
+    label:
+      pizza:
+        pName: "Pizza Name"
