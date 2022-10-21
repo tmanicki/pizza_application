@@ -21,7 +21,15 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-<div class=" m-2 actions inline-block px-6 py-2.5 bg-slate-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 active:shadow-lg transition duration-150 ease-in-out">
+  <div class="field m-2">
+    <p> Position </p>
+    <%= f.select :title, options_for_select([["Owner", 1], ["Chef", 2]]), {}, { :class =>  "actions inline-block px-6 py-2.5 bg-slate-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-slate-800 hover:shadow-lg 
+focus:bg-slate-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 active:shadow-lg transition duration-150 ease-in-out"}%>
+</div>
+<br/>
+
+<div class=" m-2 actions inline-block px-6 py-2.5 bg-slate-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-slate-800 hover:shadow-lg 
+focus:bg-slate-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 active:shadow-lg transition duration-150 ease-in-out">
     <%= f.submit "SIGN UP" %>
   </div>
   <%= render "devise/shared/links" %>
