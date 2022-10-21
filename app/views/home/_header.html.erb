@@ -21,15 +21,18 @@
     </div> -->
     <div class="w-full block flex-grow sm:flex sm:items-center sm:w-auto">
         <div class=" text-sm sm:flex-grow">
-            <ul>
                 <!--Working, but till button above is working, do not worry about
                 <a href="/" class=" mt-4 invisible sm:visible text-white hover:font-bold mr-4"> Home </a>-->
                 <%= link_to "Home", root_path, class:"nav-link mt-4 text-white hover:font-bold mr-4" %>
                 <%= link_to "Pizza Toppings", toppings_path, class:"nav-link mt-4 text-white hover:font-bold mr-4" %>
-                <%= button_to "Log out", destroy_admin_session_path, data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to log out?' }, method: :delete,  form: {style: 'display:inline-block;'}, class:"nav-link mt-4 text-white hover:font-bold mr-4" %>
-                <%= link_to "Profile", edit_admin_registration_path, class:"nav-link mt-4 text-white hover:font-bold mr-4" %>
-                <%= link_to "Log in", new_admin_session_path, class:"nav-link mt-4 text-white hover:font-bold mr-4" %>
-            <ul>
         </div>
-    </div>
+        <div class=" relative inline-block mr-4 text-sm ">
+            <% if admin_signed_in? %>
+                <%= button_to "Log out", destroy_admin_session_path, data: { turbo_method: :delete, turbo_confirm: 'Are you sure you want to log out?' }, method: :delete,  form: {style: 'display:inline-block;'}, class:"nav-link mr-4 text-white hover:font-bold mr-4" %>
+                <%= link_to "Profile", edit_admin_registration_path, class:"nav-link mr-4 text-white hover:font-bold mr-4" %>
+            <% else %>    
+                <%= link_to "Log in", new_admin_session_path, class:"nav-link mr-4 text-white hover:font-bold mr-4" %>
+            <% end %>
+        </div>
+        </div>
 </nav>
