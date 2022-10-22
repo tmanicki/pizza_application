@@ -37,3 +37,7 @@ en:
     label:
       pizza:
         pName: "Pizza Name"
+  pizza:
+    errors:
+      missing_topping:
+        format: "Missing pizza topping"

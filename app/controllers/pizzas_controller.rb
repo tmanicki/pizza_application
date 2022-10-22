@@ -13,6 +13,7 @@ class PizzasController < ApplicationController
   # GET /pizzas/new
   def new
     @pizza = Pizza.new
+    @toppings = Topping.all
   end
 
   # GET /pizzas/1/edit
@@ -22,15 +23,17 @@ class PizzasController < ApplicationController
   # POST /pizzas or /pizzas.json
   def create
     @pizza = Pizza.new(pizza_params)
+    #@toppings = Topping.all
+
 
     respond_to do |format|
-      if @pizza.save
-        format.html { redirect_to pizza_url(@pizza), notice: "Pizza was successfully created." }
-        format.json { render :show, status: :created, location: @pizza }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @pizza.errors, status: :unprocessable_entity }
-      end
+        if @pizza.save
+          format.html { redirect_to pizza_url(@pizza), notice: "Pizza was successfully created." }
+          format.json { render :show, status: :created, location: @pizza }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @pizza.errors, status: :unprocessable_entity }
+        end
     end
   end
 
@@ -65,6 +68,6 @@ class PizzasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pizza_params
-      params.require(:pizza).permit(:pName)
+      params.require(:pizza).permit(:pName, {:topping_ids => []} )
     end
 end

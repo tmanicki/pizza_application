@@ -11,9 +11,18 @@
     </div>
   <% end %>
 
-  <div class="my-5">
-    <%= form.label :pName %>
+  <div class="m-2">
+    <%= form.label :pName , class: "font-bold text-lg"%>
     <%= form.text_field :pName, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <br/>
+      <h2 class= "font-bold text-lg"> Pizza Toppings </h2>
+      <div class= "scroll-ml-6 snap-start">
+      <% for topping in Topping.all %>
+        <%= check_box_tag :topping_ids, topping.id, pizza.topping_ids.include?(topping), :name => 'pizza[topping_ids][]' %>
+        <%= h topping.name %>
+        <br/>
+      <%end%>
+      </div>
   </div>
 
   <div class="inline">
