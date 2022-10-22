@@ -1,0 +1,31 @@
+<%= form_with(model: pizza, class: "contents") do |form| %>
+  <% if pizza.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(pizza.errors.count, "error") %> prohibited this pizza from being saved:</h2>
+
+      <ul>
+        <% pizza.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="m-2">
+    <%= form.label :pName , class: "font-bold text-lg"%>
+    <%= form.text_field :pName, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <br/>
+      <h2 class= "font-bold text-lg"> Pizza Toppings </h2>
+      <div class= "scroll-ml-6 snap-start">
+      <% for topping in Topping.all %>
+        <%= check_box_tag :topping_ids, topping.id, pizza.topping_ids.include?(topping), :name => 'pizza[topping_ids][]', checked: pizza.toppings.exists?(:id => topping.id) %>
+        <%= h topping.name %>
+        <br/>
+      <%end%>
+      </div>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 ml-2 px-5 hover:text-white hover:bg-red-900 bg-gray-100 font-medium" %>
+  </div>
+<% end %>

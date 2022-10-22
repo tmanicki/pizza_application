@@ -1,20 +1,33 @@
 <div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
-
+ 
   <div class="flex justify-between items-center">
     <h1 class="font-bold text-2xl">Pizza Toppings List</h1>
   </div>
-
   <div id="toppings" class="min-w-full">
-  <strong class="block font-medium py-3 mb-1">Name:</strong>
      <% if @toppings.empty?  %>
     <p>There are currently no avaliable toppings</p>
     <div class="py-3"></div>
     <% else %>
-    <%= render @toppings %>
+    <table class="table-auto m-2 text-left text-lg w-[20rem]">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @toppings.each do |topping| %>
+          <tr>
+            <td><%= topping.name %></td>
+            <td><%= link_to 'Edit', edit_topping_path(topping), class: "text-sm rounded-lg py-1 ml-2 px-2 hover:text-white hover:bg-red-900 bg-gray-100 font-small" %></td>
+            <td><%= button_to 'Delete', topping_path(topping), method: :delete, class: "text-sm rounded-lg py-1 ml-2 px-2 hover:text-white hover:bg-red-900 bg-gray-100 font-small" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
     <%end%>
+    <br/>
   <%= link_to 'Add New Topping', new_topping_path, class: "rounded-lg py-3 ml-2 px-5 hover:text-white hover:bg-red-900 bg-gray-100 font-medium" %>
   </div>
   <div class="py-2"></div>
