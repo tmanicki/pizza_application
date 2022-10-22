@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: pizzas
+#
+#  id         :integer          not null, primary key
+#  pName      :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 require 'rails_helper'
 
 RSpec.describe Pizza, type: :model do
