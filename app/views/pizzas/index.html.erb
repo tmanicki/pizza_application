@@ -11,7 +11,9 @@
         <tr>
           <th>Pizza Name</th>
           <th>Topping('s)</th>
-          <th colspan="2"></th>
+          <% if current_admin.title != 1%>
+            <th colspan="2"></th>
+          <% end %>
         </tr>
       </thead>
 
@@ -22,7 +24,7 @@
             <% if pizza.toppings.exists? %>
             <td>
               <% pizza.toppings.each do |top| %>
-                <%= h top.name %>
+                <%= top.name %>
                 <% if top.id != pizza.toppings[pizza.toppings.length - 1].id %>
                 <h>, <h>
                 <%end%>
@@ -31,15 +33,20 @@
             <% else %>
               <td>N/A</td>
               <% end %>
-            <td><%= link_to 'Edit', edit_pizza_path(pizza), class: "text-sm rounded-lg py-1 ml-2 px-2 hover:text-white hover:bg-red-900 bg-gray-100 font-small" %></td>
-            <td><%= button_to 'Delete', pizza_path(pizza), method: :delete, class: "text-sm rounded-lg py-1 ml-2 px-2 hover:text-white hover:bg-red-900 bg-gray-100 font-small" %></td>
+
+            <% if current_admin.title != 1%>
+              <td><%= link_to 'Edit', edit_pizza_path(pizza), class: "text-sm rounded-lg py-1 ml-2 px-2 hover:text-white hover:bg-red-900 bg-gray-100 font-small" %></td>
+              <td><%= button_to 'Delete', pizza_path(pizza), method: :delete, class: "text-sm rounded-lg py-1 ml-2 px-2 hover:text-white hover:bg-red-900 bg-gray-100 font-small" %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
     </table>
     <%end%>
     <br/>
-  <%= link_to 'Create New Pizza', new_pizza_path, class: "rounded-lg py-3 ml-2 px-5 hover:text-white hover:bg-red-900 bg-gray-100 font-medium" %>
+    <% if current_admin.title == 2%>  
+      <%= link_to 'Create New Pizza', new_pizza_path, class: "rounded-lg py-3 ml-2 px-5 hover:text-white hover:bg-red-900 bg-gray-100 font-medium" %>
+    <%end%>
   </div>
   <div class="py-2"></div>
 </div>

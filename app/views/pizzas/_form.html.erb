@@ -19,7 +19,7 @@
       <div class= "scroll-ml-6 snap-start">
       <% for topping in Topping.all %>
         <%= check_box_tag :topping_ids, topping.id, pizza.topping_ids.include?(topping), :name => 'pizza[topping_ids][]', checked: pizza.toppings.exists?(:id => topping.id) %>
-        <%= h topping.name %>
+        <%= topping.name %>
         <br/>
       <%end%>
       </div>
