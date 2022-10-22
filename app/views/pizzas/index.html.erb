@@ -22,7 +22,7 @@
             <% if pizza.toppings.exists? %>
             <td>
               <% pizza.toppings.each do |top| %>
-                <%= h top.name %>
+                <%= top.name %>
                 <% if top.id != pizza.toppings[pizza.toppings.length - 1].id %>
                 <h>, <h>
                 <%end%>

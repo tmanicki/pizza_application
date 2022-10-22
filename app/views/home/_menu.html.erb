@@ -1,0 +1,15 @@
+<% pizzas.each do |pizza| %>
+    <% if pizza.toppings.exists?%>
+        <div class="divide-solid">
+            <h2 class="font-bold text-lg">
+                <%= pizza.pName %>
+            </h2>
+            <% pizza.toppings.each do |top| %>
+                <%= top.name %>
+                <% if top.id != pizza.toppings[pizza.toppings.length - 1].id %>
+                  <h>, <h>
+                <%end%>
+            <%end %>
+        </div>
+    <% end %>
+<% end %>

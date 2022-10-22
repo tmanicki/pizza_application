@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
-  resources :pizzas
+  resources :toppings, :pizzas
   devise_for :admins
-  resources :toppings
+
   get 'home/index'
   root 'home#index'
+
+  resources :pizza do
+    get 'menu', on: :member
+  end
   #get 'home/login'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
