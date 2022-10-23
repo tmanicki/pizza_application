@@ -1,7 +1,8 @@
+<div class="relative">
+  <h2 class="absolute top-left text-white font-bold text-4xl m-2">Pizza Toppings List</h2>
+  <%= image_tag "dennis-klein-IY-zGz64JxQ-unsplash.jpg", class: "object-cover h-40 w-fit"%>
+</div>
 <div class="w-full">
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-2xl">Pizza Toppings List</h1>
-  </div>
   <div id="toppings" class="min-w-full">
      <% if @toppings.empty?  %>
     <p>There are currently no avaliable toppings</p>
@@ -23,8 +24,11 @@
             <td><%= topping.name %></td>
 
             <% if current_admin.title != 2%>
-              <td><%= link_to 'Edit', edit_topping_path(topping), class: "text-sm rounded-lg py-1 ml-2 px-2 hover:text-white hover:bg-red-900 bg-gray-100 font-small" %></td>
-              <td><%= button_to 'Delete', topping_path(topping), method: :delete, class: "text-sm rounded-lg py-1 ml-2 px-2 hover:text-white hover:bg-red-900 bg-gray-100 font-small" %></td>
+              <td><%= link_to 'Edit', edit_topping_path(topping), class: "m-2 actions inline-block px-2 py-1 bg-slate-500 text-white text-xs leading-tight uppercase rounded shadow-md 
+              hover:bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 active:shadow-lg transition duration-150 ease-in-out" %></td>
+              
+              <td><%= button_to 'Delete', topping_path(topping), method: :delete, class: "m-2 actions inline-block px-2 py-1 bg-slate-500 text-white text-xs leading-tight uppercase rounded shadow-md 
+              hover:bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 active:shadow-lg transition duration-150 ease-in-out" %></td>
             <% end %>
           </tr>
         <% end %>
@@ -33,7 +37,9 @@
     <%end%>
     <br/>
     <% if current_admin.title != 2%>
-      <%= link_to 'Add New Topping', new_topping_path, class: "rounded-lg py-3 ml-2 px-5 hover:text-white hover:bg-red-900 bg-gray-100 font-medium" %>
+      <%= link_to 'Add New Topping', new_topping_path, class: "m-2 actions inline-block px-6 py-2.5 bg-slate-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md 
+      hover:bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 active:shadow-lg transition duration-150 ease-in-out" %>
+   
     <% end %>
   </div>
   <div class="py-2"></div>

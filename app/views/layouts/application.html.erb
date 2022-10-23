@@ -11,17 +11,14 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class=" bg-white">
+  <body class=" bg-orange-50">
     <!-- Home/Header is for the top of the page + nav bar-->
     <%= render "home/header" %>
-    <br>
     <% if alert || notice %>
       <%= render "layouts/alerts" %>
     <% end %>
-    <div class=" m-10 rounded-lg container px-3 py-3 bg-slate-300">
-      <div class="px-3">
+    <div class=" m-2 ">
         <%= yield %>
-      </div>
     </div>
   </body>
 </html>

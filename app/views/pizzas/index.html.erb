@@ -1,15 +1,18 @@
-  <div class="flex justify-between items-center">
-    <h1 class="font-bold text-2xl">Pizzas List</h1>
-  </div>
+  <div class="relative">
+  <h2 class="absolute top-left text-white font-bold text-4xl m-2">Pizzas List</h2>
+  <%= image_tag "nik-owens-40OJLYVWeeM-unsplash.jpg", class: "object-cover h-40 w-fit"%>
+</div>
+
+
   <div id="toppings" class="min-w-full">
      <% if @pizzas.empty?  %>
     <p>There are currently no avaliable pizzas</p>
     <div class="py-3"></div>
     <% else %>
-    <table class="table-auto m-2 text-left text-lg w-[20rem]">
+    <table class="table-auto m-2 text-left text-lg">
       <thead>
         <tr>
-          <th>Pizza Name</th>
+          <th class>Pizza Name</th>
           <th>Topping('s)</th>
           <% if current_admin.title != 1%>
             <th colspan="2"></th>
@@ -20,23 +23,29 @@
       <tbody>
         <% @pizzas.each do |pizza| %>
           <tr>
-            <td><%= pizza.pName %></td>
+            <td><div class="pr-4"><%= pizza.pName %></div></td>
             <% if pizza.toppings.exists? %>
             <td>
-              <% pizza.toppings.each do |top| %>
-                <%= top.name %>
-                <% if top.id != pizza.toppings[pizza.toppings.length - 1].id %>
-                <h>, <h>
-                <%end%>
-              <%end %>
-            </td>
-            <% else %>
-              <td>N/A</td>
-              <% end %>
+              <div class="pr-4">
+                <% pizza.toppings.each do |top| %>
+                  <%= top.name %>
+                  <% if top.id != pizza.toppings[pizza.toppings.length - 1].id %>
+                  <h>, <h>
+                  <%end%>
+                <%end %>
+              </td>
+              <% else %>
+                <td>N/A</td>
+                <% end %>
+              </div>
 
             <% if current_admin.title != 1%>
-              <td><%= link_to 'Edit', edit_pizza_path(pizza), class: "text-sm rounded-lg py-1 ml-2 px-2 hover:text-white hover:bg-red-900 bg-gray-100 font-small" %></td>
-              <td><%= button_to 'Delete', pizza_path(pizza), method: :delete, class: "text-sm rounded-lg py-1 ml-2 px-2 hover:text-white hover:bg-red-900 bg-gray-100 font-small" %></td>
+              <td><%= link_to 'Edit', edit_pizza_path(pizza), class:  "m-2 actions inline-block px-2 py-1 bg-slate-500 text-white text-xs leading-tight uppercase rounded shadow-md 
+              hover:bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 active:shadow-lg transition duration-150 ease-in-out" %></td>
+
+              <td><%= button_to 'Delete', pizza_path(pizza), method: :delete, class:  "m-2 actions inline-block px-2 py-1 bg-slate-500 text-white text-xs leading-tight uppercase rounded shadow-md 
+              hover:bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 active:shadow-lg transition duration-150 ease-in-out" %></td>
+     
             <% end %>
           </tr>
         <% end %>
@@ -45,7 +54,8 @@
     <%end%>
     <br/>
     <% if current_admin.title == 2%>  
-      <%= link_to 'Create New Pizza', new_pizza_path, class: "rounded-lg py-3 ml-2 px-5 hover:text-white hover:bg-red-900 bg-gray-100 font-medium" %>
+      <%= link_to 'Create New Pizza', new_pizza_path, class:  "m-2 actions inline-block px-6 py-3 bg-slate-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md 
+      hover:bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 active:shadow-lg transition duration-150 ease-in-out" %>
     <%end%>
   </div>
   <div class="py-2"></div>
