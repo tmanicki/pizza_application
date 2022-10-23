@@ -1,2 +1,10 @@
-<p>Welcome the 2501 Ave Pizzeria!!!!</p>
+<div class="relative">
+    <div class="absolute top-0 left-0">
+    <h2 class="text-white font-bold text-4xl m-2">Welcome to 2501 Ave Pizzeria!</h2>
+    <h2 class="text-white font-bold text-xl m-2">Taste the flavor of Chandler</h2>
+    </div>
+    <%= image_tag "georgia-z-JG5lgvc57qE-unsplash.jpg", class: "object-cover h-40 w-full"%>
+</div>
+<div class=" m-2">
 <%= render "menu", pizzas: Pizza.all %>
+</div>

@@ -1,4 +1,7 @@
-<h2 class="font-bold text-2xl m-2">Sign in</h2>
+<div class="relative">
+<h2 class="absolute top-left text-white font-bold text-4xl m-2">Sign in</h2>
+<%= image_tag "jon-tyson-Gp1bS0WTw3w-unsplash.jpg", class: "object-cover h-40 w-fit"%>
+</div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="fiel m-2">
@@ -18,7 +21,8 @@
     </div>
   <% end %>
 
-  <div class=" m-2 actions inline-block px-6 py-2.5 bg-slate-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 active:shadow-lg transition duration-150 ease-in-out">
+  <div class="m-2 actions inline-block px-6 py-2.5 bg-slate-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md 
+  hover:bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 active:shadow-lg transition duration-150 ease-in-out">
     <%= f.submit "SIGN IN" %>
   </div>
   <%= render "devise/shared/links" %>

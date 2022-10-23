@@ -1,15 +1,44 @@
-<% pizzas.each do |pizza| %>
-    <% if pizza.toppings.exists?%>
-        <div class="divide-solid">
-            <h2 class="font-bold text-lg">
-                <%= pizza.pName %>
-            </h2>
-            <% pizza.toppings.each do |top| %>
-                <%= top.name %>
-                <% if top.id != pizza.toppings[pizza.toppings.length - 1].id %>
-                  <h>, <h>
-                <%end%>
-            <%end %>
+<% if pizzas.exists? %>
+    <div class="flex justify-center  m-2">
+        <div>
+            <br/>
+            <p class="text-2xl font-bold underline"> Menu </p>
+
+            <% pizzas.each do |pizza| %>
+                <% if pizza.toppings.exists?%>
+                    <div class="divide-solid">
+                        <h2 class="font-bold text-lg">
+                            <%= pizza.pName %>
+                        </h2>
+                        <% pizza.toppings.each do |top| %>
+                            <%= top.name %>
+                            <% if top.id != pizza.toppings[pizza.toppings.length - 1].id %>
+                            <h>, <h>
+                            <%end%>
+                        <%end %>
+                        <br/>
+                    </div>
+                <% end %>
+            <% end %>
+            <br/>
+            <p class="text-2xl font-bold underline"> Unavaliable Menu Items </p>
+            <% pizzas.each do |pizza| %>
+                <% if pizza.toppings.exists? == false%>
+                    <div class="divide-solid">
+                        <h2 class="font-bold text-lg">
+                        <p style="text-decoration: line-through;"> <%= pizza.pName%> </p>
+                        </h2>
+                    </div>
+                <% end %>
+            <% end %>
+            <br/>
         </div>
-    <% end %>
-<% end %>
+    </div>
+<% else %>
+    <div class="flex justify-center  m-2">
+        <div>
+            <br/>
+            <p class="text-2xl font-bold"> We are sorry, there is no Menu avaliable at this time. </p>
+        </div>
+    </div>
+ <% end %>
