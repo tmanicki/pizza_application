@@ -14,7 +14,5 @@ Rails: 7.0.4
 To setup environment, please make sure items above are installed. To do this, please follow 
 the Ruby on Rails guide: https://guides.rubyonrails.org/getting_started.html
 
-1. '''
-git clone https://github.com/tmanicki/pizza_application.git
-'''
+1. ``` git clone https://github.com/tmanicki/pizza_application.git ```
 2. 
