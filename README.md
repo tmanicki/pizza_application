@@ -48,6 +48,3 @@ bundle install
  ```
  ./bin/rspec
  ```
- 
- # Known Issues
- -  Goolge Chrome image bug #30, Images act odd on chrome. This is a visual bug only.
