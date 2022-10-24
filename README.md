@@ -48,3 +48,5 @@ bundle install
  ```
  ./bin/rspec
  ```
+# Known issues
+It appears Google Chrome causes some issue with the GUI. Currently unable to update an account with google chrome.
