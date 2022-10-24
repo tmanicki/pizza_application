@@ -1,0 +1,13 @@
+<div id="<%= dom_id pizza %>">
+  <div class=" m-6">
+    <%= pizza.pName %>
+  <% if action_name != "show" %>
+   <!-- <%= link_to "Show this pizza", pizza, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %> -->
+    <%= link_to 'Edit', edit_pizza_path(pizza), class: "text-sm rounded-lg py-1 ml-2 px-2 hover:text-white hover:bg-red-900 bg-gray-100 font-small" %>
+    <div class="inline-block">
+      <%= button_to 'Delete', pizza_path(pizza), method: :delete, class: "text-sm rounded-lg py-1 ml-2 px-2 hover:text-white hover:bg-red-900 bg-gray-100 font-small" %>
+    </div>
+    <hr class="mt-6">
+  <% end %>
+  </div>
+</div>

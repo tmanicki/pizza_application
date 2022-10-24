@@ -1,0 +1,34 @@
+<%= form_with(model: pizza, class: "contents") do |form| %>
+  <% if pizza.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
+      <h2><%= pluralize(pizza.errors.count, "error") %> prohibited this pizza from being saved:</h2>
+
+      <ul>
+        <% pizza.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="m-2">
+    <%= form.label :pName , class: "font-bold text-lg"%>
+    <%= form.text_field :pName, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      <br/>
+      <% if Topping.all.exists? %>
+        <h2 class= "font-bold text-lg"> Pizza Toppings </h2>
+        <div class= "scroll-ml-6 snap-start">
+        <% for topping in Topping.all %>
+          <%= check_box_tag :topping_ids, topping.id, pizza.topping_ids.include?(topping), :name => 'pizza[topping_ids][]', checked: pizza.toppings.exists?(:id => topping.id) %>
+          <%= topping.name %>
+          <br/>
+        <%end%>
+        </div>
+      <% end %>
+  </div>
+
+  <div class="inline">
+    <%= form.submit class: "m-2 actions inline-block px-6 py-2.5 bg-slate-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md 
+      hover:bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 active:shadow-lg transition duration-150 ease-in-out" %>
+  </div>
+<% end %>
