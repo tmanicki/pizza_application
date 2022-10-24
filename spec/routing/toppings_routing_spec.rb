@@ -3,6 +3,7 @@ require "rails_helper"
 RSpec.describe ToppingsController, type: :routing do
   describe "routing" do
     it "routes to #index" do
+      
       expect(get: "/toppings").to route_to("toppings#index")
     end
 

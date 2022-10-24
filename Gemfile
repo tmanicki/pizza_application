@@ -83,3 +83,4 @@ end
 gem "tailwindcss-rails", "~> 2.0"
 gem 'devise'
 gem "pg", "~> 1.4"
+gem 'factory_bot_rails'

@@ -32,9 +32,12 @@ RSpec.describe "/pizzas", type: :request do
   let(:blank_attributes) {
     {pName: ""}
   }
+  
 
   describe "GET /index" do
     it "renders a successful response" do
+      user = FactoryBot.create(:admin, title:"2", email: "chef@pizza.com")
+      sign_in user
       Pizza.create! valid_attributes
       get pizzas_url
       expect(response).to be_successful

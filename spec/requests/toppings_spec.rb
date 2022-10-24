@@ -40,6 +40,8 @@ RSpec.describe "/toppings", type: :request do
 #### INDEX
   describe "GET /index" do
     it "renders a successful response" do
+      user = FactoryBot.create(:admin, title:"2", email: "chef@pizza.com")
+      sign_in user
       Topping.create! valid_attributes
       get toppings_url
       expect(response).to be_successful
