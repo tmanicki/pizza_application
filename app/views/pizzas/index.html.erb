@@ -1,6 +1,6 @@
   <div class="relative">
-  <h2 class="absolute top-left text-white font-bold text-4xl m-2">Pizzas List</h2>
-  <%= image_tag "nik-owens-40OJLYVWeeM-unsplash.jpg", class: "object-cover h-40 w-fit"%>
+  <h2 class="absolute top-left text-white font-bold text-4xl m-2">Pizza List</h2>
+  <%= image_tag "nik-owens-40OJLYVWeeM-unsplash.jpg", class: "object-cover h-40 w-full"%>
 </div>
 
 
@@ -13,7 +13,7 @@
       <thead>
         <tr>
           <th class>Pizza Name</th>
-          <th>Topping('s)</th>
+          <th>Toppings</th>
           <% if current_admin.title != 1%>
             <th colspan="2"></th>
           <% end %>
