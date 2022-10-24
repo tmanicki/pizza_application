@@ -18,11 +18,19 @@ RSpec.describe "/pizzas", type: :request do
   # Pizza. As you add validations to Pizza, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    {name: "Pepporni Pizza"}
+    {pName: "Pepporni Pizza"}
+  }
+
+  let(:valid_topping_attributes) {
+    {name: "Pepporni"}
   }
 
   let(:invalid_attributes) {
-    {name: "N0pe"}
+    {pName: "N0pe"}
+  }
+
+  let(:blank_attributes) {
+    {pName: ""}
   }
 
   describe "GET /index" do
@@ -70,6 +78,20 @@ RSpec.describe "/pizzas", type: :request do
       end
     end
 
+    context "with valid parameters and topping" do
+      it "creates a new Pizza" do
+        Topping.create! valid_topping_attributes
+        expect {
+          post pizzas_url, params: { pizza: valid_attributes, pizza_topping: valid_topping_attributes }
+        }.to change(Pizza, :count).by(1)
+      end
+
+      it "redirects to the created pizza" do
+        post pizzas_url, params: { pizza: valid_attributes }
+        expect(response).to redirect_to(pizza_url(Pizza.last))
+      end
+    end
+
     context "with invalid parameters" do
       it "does not create a new Pizza" do
         expect {
@@ -84,19 +106,33 @@ RSpec.describe "/pizzas", type: :request do
       end
     
     end
+
+    context "with invalid blank parameters" do
+      it "does not create a new Pizza" do
+        expect {
+          post pizzas_url, params: { pizza: blank_attributes }
+        }.to change(Pizza, :count).by(0)
+      end
+
+    
+      it "renders a response with 422 status (i.e. to display the 'new' template)" do
+        post pizzas_url, params: { pizza: blank_attributes }
+        expect(response).to have_http_status(:unprocessable_entity)
+      end
+    
+    end
   end
 
   describe "PATCH /update" do
     context "with valid parameters" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {pName: "THE Pizza"}
       }
 
       it "updates the requested pizza" do
         pizza = Pizza.create! valid_attributes
         patch pizza_url(pizza), params: { pizza: new_attributes }
         pizza.reload
-        skip("Add assertions for updated state")
       end
 
       it "redirects to the pizza" do
@@ -107,14 +143,42 @@ RSpec.describe "/pizzas", type: :request do
       end
     end
 
+    context "with valid parameters and toppings" do
+      let(:new_attributes) {
+        {pName: "THE Pizza"}
+      }
+
+      it "updates the requested pizza" do
+        pizza = Pizza.create! valid_attributes
+        patch pizza_url(pizza), params: { pizza: new_attributes }
+        pizza.reload
+      end
+
+      it "redirects to the pizza" do
+        Topping.create! valid_topping_attributes
+        pizza = Pizza.create! valid_attributes
+        patch pizza_url(pizza), params: { pizza: new_attributes, pizza_topping: valid_topping_attributes }
+        pizza.reload
+        expect(response).to redirect_to(pizza_url(pizza))
+      end
+    end
+
     context "with invalid parameters" do
-    
+  
       it "renders a response with 422 status (i.e. to display the 'edit' template)" do
         pizza = Pizza.create! valid_attributes
         patch pizza_url(pizza), params: { pizza: invalid_attributes }
         expect(response).to have_http_status(:unprocessable_entity)
       end
+    end
+
+      context "with invalid blank parameters" do
     
+        it "renders a response with 422 status (i.e. to display the 'edit' template)" do
+          pizza = Pizza.create! valid_attributes
+          patch pizza_url(pizza), params: { pizza: blank_attributes }
+          expect(response).to have_http_status(:unprocessable_entity)
+        end
     end
   end
 
