@@ -1,13 +1,23 @@
-<div class="m-2  w-full ">
+<div class="mx-auto md:w-2/3 w-full flex">
   <div class="mx-auto">
-    <h2 class="font-bold text-lg">Topping Created</h2>
-    <%= render @topping %>
-
-    <%= link_to 'Edit', edit_topping_path(@topping), class: "rounded-lg py-3 ml-2 px-5 hover:text-white hover:bg-red-900 bg-gray-100 font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to 'Delete', topping_path(@topping), method: :delete, class: "rounded-lg py-3 ml-2 px-5 hover:text-white hover:bg-red-900 bg-gray-100 font-medium" %>
+    <h2 class="font-bold text-4xl">Topping Created</h2>
+    <br/>
+    <div class="inline-block">
+      <h2> <span class="font-bold"> New Topping Name: </span> <%= @topping.name %></h2>
     </div>
-    <%= link_to 'Add New Topping', new_topping_path, class: "rounded-lg py-3 ml-2 px-5 hover:text-white hover:bg-red-900 bg-gray-100 font-medium" %>
-    <%= link_to 'Back', toppings_path, class: "rounded-lg py-3 ml-2 px-5 hover:text-white hover:bg-red-900 bg-gray-100 font-medium" %>
+    <br/>
+    <br/>
+
+    <%= link_to 'Edit', edit_topping_path(@topping), class: "m-2 actions inline-block px-6 py-2.5 bg-slate-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md 
+      hover:bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 active:shadow-lg transition duration-150 ease-in-out" %>
+    <div class="inline-block ml-2">
+      <%= button_to 'Delete', topping_path(@topping), method: :delete, class: "m-2 actions inline-block px-6 py-2.5 bg-slate-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md 
+      hover:bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 active:shadow-lg transition duration-150 ease-in-out" %>
+    </div>
+    <%= link_to 'Add New Topping', new_topping_path, class: "m-2 actions inline-block px-6 py-2.5 bg-slate-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md 
+      hover:bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 active:shadow-lg transition duration-150 ease-in-out" %>
+
+    <%= link_to 'Back', toppings_path, class: "m-2 actions inline-block px-6 py-2.5 bg-slate-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md 
+      hover:bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 active:shadow-lg transition duration-150 ease-in-out" %>
   </div>
 </div>

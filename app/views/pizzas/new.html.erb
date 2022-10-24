@@ -1,7 +1,11 @@
+<div class="relative">
+  <h2 class="absolute top-left text-white font-bold text-4xl m-2">Create New Pizza</h2>
+  <%= image_tag "anthony-duran-QbOvrpDU1KA-unsplash.jpg", class: "object-cover h-40 w-full"%>
+</div>
 <div class="mx-auto m-2">
-  <h1 class="font-bold text-4xl">Create New Pizza</h1>
 
   <%= render "form", pizza: @pizza %>
-
-  <%= link_to 'Back', pizzas_path, class: "rounded-lg py-3 ml-2 px-5 hover:text-white hover:bg-red-900 bg-gray-100 font-medium" %>
+  <%= link_to 'Back', pizzas_path, class: "m-2 actions inline-block px-6 py-2.5 bg-slate-500 text-white font-medium text-xs leading-tight uppercase rounded shadow-md 
+      hover:bg-slate-800 hover:shadow-lg focus:bg-slate-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-900 active:shadow-lg transition duration-150 ease-in-out" %>
+      
 </div>
